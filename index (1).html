@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gaurav Raj | Support and security</title>
+<meta name="description" content="Gaurav Raj, computer science graduate based in Delhi. Customer support and onboarding at Vareli Tecsoft, with hands-on security practice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @property --h { syntax: "<number>"; inherits: true; initial-value: 302; }
+
+  :root {
+    --h: 302;
+    transition: --h .35s ease;
+    --bg: #FAF9FC;
+    --surface: #FFFFFF;
+    --ink: #1E1D28;
+    --muted: #625F73;
+    --line: #E5E2EE;
+    --accent: hsl(var(--h) 70% 42%);
+    --accent-strong: hsl(var(--h) 72% 32%);
+    --on-accent: #FFFFFF;
+    --tint: hsl(var(--h) 85% 95%);
+    --tint2: hsl(var(--h) 75% 90%);
+    --g1: hsl(350 78% 52%);
+    --g2: hsl(255 74% 55%);
+    --sup-bg: hsl(350 90% 94%);
+    --sec-bg: hsl(255 90% 94%);
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14151D;
+      --surface: #1B1D28;
+      --ink: #ECEBF3;
+      --muted: #A3A1B5;
+      --line: #2C2E3D;
+      --accent: hsl(var(--h) 92% 74%);
+      --accent-strong: hsl(var(--h) 90% 82%);
+      --on-accent: #14151D;
+      --tint: hsl(var(--h) 28% 17%);
+      --tint2: hsl(var(--h) 30% 24%);
+      --g1: hsl(350 85% 62%);
+      --g2: hsl(255 85% 70%);
+      --sup-bg: hsl(350 35% 20%);
+      --sec-bg: hsl(255 35% 22%);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14151D;
+    --surface: #1B1D28;
+    --ink: #ECEBF3;
+    --muted: #A3A1B5;
+    --line: #2C2E3D;
+    --accent: hsl(var(--h) 92% 74%);
+    --accent-strong: hsl(var(--h) 90% 82%);
+    --on-accent: #14151D;
+    --tint: hsl(var(--h) 28% 17%);
+    --tint2: hsl(var(--h) 30% 24%);
+    --g1: hsl(350 85% 62%);
+    --g2: hsl(255 85% 70%);
+    --sup-bg: hsl(350 35% 20%);
+    --sec-bg: hsl(255 35% 22%);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent-strong); text-underline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* Bar with tabs */
+  .bar { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
+  .bar-in { display: flex; align-items: center; gap: 8px 20px; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
+  .brand { order: 1; font-family: var(--display); font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+  .tabs { order: 2; flex: 1 1 auto; display: flex; justify-content: center; position: relative; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    all: unset; box-sizing: border-box; cursor: pointer; white-space: nowrap;
+    padding: 12px 16px; font-weight: 500; color: var(--muted);
+  }
+  .tab:hover { color: var(--ink); }
+  .tab[aria-selected="true"] { color: var(--ink); font-weight: 600; }
+  .tab:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; border-radius: 8px; }
+  .ind {
+    position: absolute; left: 0; bottom: 0; height: 4px; width: 0; border-radius: 4px 4px 0 0;
+    background: var(--accent); transition: transform .3s ease, width .3s ease;
+  }
+  .theme {
+    order: 3; all: unset; cursor: pointer; font-size: .9rem; color: var(--muted);
+    border: 1.5px solid var(--line); border-radius: 10px; padding: 4px 12px;
+  }
+  .theme:hover { color: var(--ink); border-color: var(--muted); }
+  .theme:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+  .tabpanel { padding: 44px 0 72px; }
+  .tabpanel:not([hidden]) { animation: show .25s ease; }
+  @keyframes show { from { opacity: 0; } to { opacity: 1; } }
+
+  h1, h2, h3 { font-family: var(--display); letter-spacing: -0.02em; margin: 0; }
+  .page-h { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.05; margin-bottom: 14px; }
+  .lead { font-size: 1.2rem; max-width: 60ch; margin: 0 0 32px; color: var(--muted); }
+  .lead strong { color: var(--ink); font-weight: 600; }
+
+  /* Buttons */
+  .btn { display: inline-block; padding: 12px 22px; border-radius: 12px; font-weight: 600; text-decoration: none; border: 2px solid var(--accent); cursor: pointer; font-size: 1rem; font-family: var(--body); }
+  .btn.primary { background: var(--accent); color: var(--on-accent); }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn.ghost:hover { border-color: var(--ink); }
+  .btn.primary:hover { filter: brightness(1.06); }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px; }
+  .link { all: unset; cursor: pointer; color: var(--accent-strong); font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+  .link:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  /* Hero */
+  .hello { margin: 0 0 12px; color: var(--muted); font-size: 1.1rem; }
+  .stack { display: grid; }
+  .stack > .v { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility 0s linear .3s; }
+  .stack > .v.on { opacity: 1; visibility: visible; transition: opacity .3s ease, visibility 0s; }
+  h1.stack { font-size: clamp(2.5rem, 6.4vw, 4.8rem); font-weight: 800; line-height: 1.02; letter-spacing: -0.03em; max-width: 16ch; margin-bottom: 20px; }
+  .subs { max-width: 56ch; color: var(--muted); font-size: 1.15rem; margin: 0 0 36px; }
+
+  .dial { max-width: 720px; }
+  .dial-labels { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .end {
+    all: unset; cursor: pointer; font-family: var(--display); font-weight: 700; font-size: 1.05rem; color: var(--muted);
+    padding: 4px 2px; border-bottom: 3px solid transparent;
+  }
+  .end:hover { color: var(--ink); }
+  .end[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  .end:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 44px; background: transparent; margin: 0; cursor: pointer; }
+  input[type="range"]::-webkit-slider-runnable-track { height: 14px; border-radius: 999px; background: linear-gradient(90deg, var(--g1), var(--g2)); }
+  input[type="range"]::-moz-range-track { height: 14px; border-radius: 999px; background: linear-gradient(90deg, var(--g1), var(--g2)); }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 40px; height: 40px; margin-top: -13px; border-radius: 50%;
+    background: var(--surface); border: 6px solid var(--accent); box-shadow: 0 3px 10px rgba(0,0,0,.22);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--surface); border: 6px solid var(--accent); box-shadow: 0 3px 10px rgba(0,0,0,.22);
+  }
+  input[type="range"]:focus-visible { outline: none; }
+  input[type="range"]:focus-visible::-webkit-slider-thumb { outline: 3px solid var(--ink); outline-offset: 2px; }
+  input[type="range"]:focus-visible::-moz-range-thumb { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .hint { margin: 6px 0 0; color: var(--muted); font-size: .95rem; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 44px; }
+  .colx { padding-left: 20px; border-left: 5px solid; transition: opacity .2s ease; }
+  .colx.s { border-color: var(--g1); opacity: var(--so, 1); }
+  .colx.x { border-color: var(--g2); opacity: var(--xo, 1); }
+  .colx h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
+  .colx ul { margin: 0 0 12px; padding-left: 18px; }
+  .colx li { margin-bottom: 4px; }
+
+  /* Accordion */
+  .acc-list { border-bottom: 1.5px solid var(--line); }
+  .acc { border-top: 1.5px solid var(--line); }
+  .acc h3 { font-family: var(--body); letter-spacing: 0; font-size: 1.05rem; font-weight: 600; }
+  .acc button {
+    all: unset; box-sizing: border-box; cursor: pointer; width: 100%;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 4px; font-size: 1.1rem; font-weight: 600;
+  }
+  .acc button:hover { color: var(--accent-strong); }
+  .acc button:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; border-radius: 8px; }
+  .chev { flex: none; width: 9px; height: 9px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translate(-2px, -2px); transition: transform .25s ease; }
+  .acc button[aria-expanded="true"] .chev { transform: rotate(-135deg) translate(-2px, -2px); }
+  .panel { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows .25s ease, visibility 0s linear .25s; }
+  .panel.open { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows .25s ease, visibility 0s; }
+  .panel > div { overflow: hidden; }
+  .panel p { margin: 0 4px 18px; color: var(--muted); max-width: 52ch; }
+
+  /* Support tab */
+  .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; }
+  .col-h { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+  .edu { margin: 0 0 28px; padding: 16px 18px; background: var(--tint); border-radius: 16px; }
+  .edu strong { font-weight: 600; }
+  dl.kv { margin: 0; display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 10px 20px; }
+  dl.kv dt { font-weight: 600; }
+  dl.kv dd { margin: 0; color: var(--muted); }
+
+  /* Security tab */
+  .lab { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 20px; align-items: start; }
+  .toollist { display: flex; flex-direction: column; gap: 6px; }
+  .toollist button {
+    all: unset; box-sizing: border-box; cursor: pointer; padding: 11px 16px; border-radius: 12px; font-weight: 600; color: var(--muted);
+  }
+  .toollist button:hover { color: var(--ink); background: var(--tint); }
+  .toollist button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+  .toollist button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .tooldetail { background: var(--tint); border-radius: 22px; padding: 28px; min-height: 300px; }
+  .tooldetail h3 { font-size: 1.9rem; font-weight: 800; margin-bottom: 8px; }
+  .tooldetail p { margin: 0 0 18px; max-width: 54ch; }
+  .lbl { color: var(--muted); font-size: .95rem; margin-bottom: 6px !important; }
+  pre.code { margin: 0 0 14px; padding: 16px 18px; background: #1E1D2A; color: #EDEAF8; border-radius: 12px; overflow-x: auto; font-family: var(--mono); font-size: .95rem; line-height: 1.5; }
+  .small { color: var(--muted); font-size: .98rem; margin: 0 !important; }
+  .trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; margin-top: 48px; }
+  .trio > div { border-top: 4px solid var(--accent); padding-top: 14px; }
+  .trio h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+  .trio p, .trio ul { margin: 0; color: var(--muted); padding: 0; list-style: none; }
+  .trio li { margin-bottom: 4px; }
+
+  /* Projects carousel */
+  .track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 2px 18px; scrollbar-width: thin; }
+  .slide {
+    position: relative; overflow: hidden; flex: 0 0 min(440px, 86%); scroll-snap-align: start;
+    min-height: 300px; padding: 30px; border-radius: 26px; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .slide.s { background: var(--sup-bg); }
+  .slide.x { background: var(--sec-bg); }
+  .slide::after { content: ""; position: absolute; top: -40px; right: -40px; width: 170px; height: 170px; border-radius: 50%; opacity: .9; }
+  .slide.s::after { background: var(--g1); }
+  .slide.x::after { background: var(--g2); }
+  .tag { display: flex; align-items: center; gap: 8px; font-weight: 600; margin-bottom: 10px; font-size: .98rem; }
+  .tag i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+  .slide.s .tag i { background: var(--g1); }
+  .slide.x .tag i { background: var(--g2); }
+  .slide h3 { font-size: 1.7rem; font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+  .slide p { margin: 0; max-width: 34ch; color: var(--ink); opacity: .82; }
+  .car-ctrl { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+  .car-ctrl .nav { all: unset; cursor: pointer; padding: 8px 16px; border-radius: 10px; border: 1.5px solid var(--line); font-weight: 600; }
+  .car-ctrl .nav:hover:not(:disabled) { border-color: var(--ink); }
+  .car-ctrl .nav:disabled { opacity: .35; cursor: default; }
+  .car-ctrl .nav:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .dots { display: flex; gap: 8px; margin-left: auto; }
+  .dots button { all: unset; cursor: pointer; width: 12px; height: 12px; border-radius: 50%; background: var(--line); }
+  .dots button[aria-current="true"] { background: var(--accent); width: 28px; border-radius: 8px; transition: width .2s ease; }
+  .dots button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+  /* Contact */
+  .big-mail { font-family: var(--display); font-weight: 800; font-size: clamp(1.5rem, 4.6vw, 2.6rem); letter-spacing: -0.02em; overflow-wrap: anywhere; }
+  .mail-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 12px 0 20px; }
+  .copy { all: unset; cursor: pointer; font-size: .95rem; font-weight: 600; border: 1.5px solid var(--line); border-radius: 10px; padding: 6px 14px; }
+  .copy:hover { border-color: var(--ink); }
+  .copy:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .status { font-size: .95rem; color: var(--muted); }
+  .clock { margin-top: 32px; color: var(--muted); }
+
+  footer.site { border-top: 1px solid var(--line); padding: 22px 0 40px; color: var(--muted); font-size: .92rem; }
+
+  @media (max-width: 820px) {
+    .two, .split { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .lab { grid-template-columns: minmax(0, 1fr); }
+    .toollist { flex-direction: row; flex-wrap: wrap; }
+  }
+  @media (max-width: 720px) {
+    .tabs { order: 4; flex-basis: 100%; justify-content: flex-start; }
+    .theme { margin-left: auto; }
+    .tabpanel { padding-top: 28px; }
+  }
+  @media (max-width: 520px) {
+    dl.kv { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    dl.kv dd { margin-bottom: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    :root { transition: none; }
+    .tabpanel:not([hidden]) { animation: none; }
+    .ind, .chev, .panel, .panel.open, .stack > .v, .stack > .v.on, .colx, .dots button { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="brand" href="#home" data-goto="home">Gaurav Raj</a>
+    <div class="tabs" role="tablist" aria-label="Sections" id="tabs">
+      <button class="tab" role="tab" id="tab-home" aria-controls="panel-home" aria-selected="true">Home</button>
+      <button class="tab" role="tab" id="tab-support" aria-controls="panel-support" aria-selected="false" tabindex="-1">Support</button>
+      <button class="tab" role="tab" id="tab-security" aria-controls="panel-security" aria-selected="false" tabindex="-1">Security</button>
+      <button class="tab" role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="false" tabindex="-1">Projects</button>
+      <button class="tab" role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false" tabindex="-1">Contact</button>
+      <span class="ind" id="ind" aria-hidden="true"></span>
+    </div>
+    <button type="button" class="theme" id="theme">Dark</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HOME -->
+  <section class="tabpanel" id="panel-home" role="tabpanel" aria-labelledby="tab-home" tabindex="0">
+    <div id="hero">
+      <p class="hello">Hi, I'm Gaurav, a computer science graduate based in Delhi.</p>
+      <h1 class="stack">
+        <span class="v" data-v="support">I get customers unstuck.</span>
+        <span class="v on" data-v="both">I fix customer problems and study how systems break.</span>
+        <span class="v" data-v="security">I learn how systems break.</span>
+      </h1>
+      <div class="stack subs">
+        <p class="v" data-v="support" style="margin:0">At Vareli Tecsoft I onboard new customers, run configuration demos and resolve tickets for wedding and event planners on TTP.</p>
+        <p class="v on" data-v="both" style="margin:0">Support is my day job. Security is what I practise on my own, in labs and through my studies.</p>
+        <p class="v" data-v="security" style="margin:0">Hands-on labs, the tools that go with them, and a study plan that points toward SOC work.</p>
+      </div>
+
+      <div class="dial">
+        <div class="dial-labels" role="group" aria-label="Jump to a side">
+          <button type="button" class="end" data-v="0" aria-pressed="false">Support</button>
+          <button type="button" class="end" data-v="50" aria-pressed="true">Both</button>
+          <button type="button" class="end" data-v="100" aria-pressed="false">Security</button>
+        </div>
+        <input type="range" id="dial" min="0" max="100" step="1" value="50" aria-label="Blend between support and security" aria-valuetext="Both">
+        <p class="hint">Drag the handle to switch between my two sides.</p>
+      </div>
+
+      <div class="two">
+        <div class="colx s">
+          <h2>Support at work</h2>
+          <ul>
+            <li>Onboarding new customers on TTP</li>
+            <li>Configuration demos for clients</li>
+            <li>Ticket resolution</li>
+          </ul>
+          <button type="button" class="link" data-goto="support">More on support</button>
+        </div>
+        <div class="colx x">
+          <h2>Security on my own</h2>
+          <ul>
+            <li>Labs on TryHackMe, HackTheBox and OverTheWire Bandit</li>
+            <li>Nmap, Wireshark, Burp Suite, Metasploit, SQLMap</li>
+            <li>Studying SC-900, SOC fundamentals, Defender and Sentinel</li>
+          </ul>
+          <button type="button" class="link" data-goto="security">More on security</button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href="mailto:rajgaurav2541@gmail.com">Email me</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/gauravraj04" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT -->
+  <section class="tabpanel" id="panel-support" role="tabpanel" aria-labelledby="tab-support" tabindex="0" hidden>
+    <h2 class="page-h">Support</h2>
+    <p class="lead">I'm a <strong>Customer Onboarding &amp; Support Intern</strong> at Vareli Tecsoft Pvt. Ltd. in Pune, working on TTP (The Tech Planner), an event management platform for wedding and event planners.</p>
+    <div class="split">
+      <div>
+        <h3 class="col-h">What I do day to day</h3>
+        <div class="acc-list">
+          <div class="acc">
+            <h3><button type="button" aria-expanded="false" aria-controls="p1" id="b1">Resolving tickets <span class="chev" aria-hidden="true"></span></button></h3>
+            <div class="panel" id="p1" role="region" aria-labelledby="b1"><div>
+              <p>I work out what the client is actually trying to do, then either fix it or explain it clearly. I keep a written record so the team knows what changed.</p>
+            </div></div>
+          </div>
+          <div class="acc">
+            <h3><button type="button" aria-expanded="false" aria-controls="p2" id="b2">Onboarding new customers <span class="chev" aria-hidden="true"></span></button></h3>
+            <div class="panel" id="p2" role="region" aria-labelledby="b2"><div>
+              <p>When a wedding or event planner joins TTP, I guide them through getting started so they aren't left to work out the platform alone.</p>
+            </div></div>
+          </div>
+          <div class="acc">
+            <h3><button type="button" aria-expanded="false" aria-controls="p3" id="b3">Configuration demos <span class="chev" aria-hidden="true"></span></button></h3>
+            <div class="panel" id="p3" role="region" aria-labelledby="b3"><div>
+              <p>I show clients how to set the platform up for the way they work, so they can manage it themselves afterwards.</p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="edu"><strong>B.Tech, Computer Science Engineering</strong><br>Lovely Professional University</p>
+        <dl class="kv">
+          <dt>Support</dt>
+          <dd>Ticket handling, customer onboarding, configuration demos, written follow-ups.</dd>
+          <dt>Technical</dt>
+          <dd>Troubleshooting, APIs and HTTP methods, Excel, Linux.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section class="tabpanel" id="panel-security" role="tabpanel" aria-labelledby="tab-security" tabindex="0" hidden>
+    <h2 class="page-h">Security</h2>
+    <p class="lead">I learn security by doing it in labs, and I'm studying toward SOC work. Pick a tool to see what it does.</p>
+    <div class="lab">
+      <div class="toollist" role="group" aria-label="Tools I've worked with">
+        <button type="button" data-tool="nmap" aria-pressed="true">Nmap</button>
+        <button type="button" data-tool="wireshark" aria-pressed="false">Wireshark</button>
+        <button type="button" data-tool="burp" aria-pressed="false">Burp Suite</button>
+        <button type="button" data-tool="metasploit" aria-pressed="false">Metasploit</button>
+        <button type="button" data-tool="sqlmap" aria-pressed="false">SQLMap</button>
+        <button type="button" data-tool="kali" aria-pressed="false">Kali Linux</button>
+      </div>
+      <div class="tooldetail" aria-live="polite">
+        <h3 id="tName"></h3>
+        <p id="tWhat"></p>
+        <p class="lbl">Example from a lab setup (private addresses only)</p>
+        <pre class="code"><code id="tCode"></code></pre>
+        <p class="small" id="tNote"></p>
+      </div>
+    </div>
+    <div class="trio">
+      <div>
+        <h3>Practice</h3>
+        <p>TryHackMe, HackTheBox and OverTheWire Bandit.</p>
+      </div>
+      <div>
+        <h3>Studying</h3>
+        <ul>
+          <li>SC-900 and SOC fundamentals</li>
+          <li>Microsoft Defender XDR and Sentinel</li>
+          <li>MITRE ATT&amp;CK and OWASP Top 10</li>
+          <li>The incident response lifecycle</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Certificates</h3>
+        <ul>
+          <li>Tata Cybersecurity</li>
+          <li>Mastercard Cybersecurity</li>
+          <li>IBM Generative AI</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="tabpanel" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" tabindex="0" hidden>
+    <h2 class="page-h">Projects</h2>
+    <p class="lead">Use the buttons or swipe the row.</p>
+    <div class="track" id="track" role="region" aria-label="Projects" tabindex="0">
+      <article class="slide s">
+        <div class="tag"><i></i>Support</div>
+        <h3>Customer onboarding on TTP</h3>
+        <p>Helping wedding and event planners get started on the platform, from first setup to day-to-day use.</p>
+      </article>
+      <article class="slide s">
+        <div class="tag"><i></i>Support</div>
+        <h3>WhatsApp Business API templates for TTP</h3>
+        <p>Message templates for TTP's customer communication, drafted to follow Meta's template rules.</p>
+      </article>
+      <article class="slide x">
+        <div class="tag"><i></i>Security</div>
+        <h3>Lab write-ups</h3>
+        <p>Write-ups from my TryHackMe and HackTheBox labs will go here.</p>
+      </article>
+    </div>
+    <div class="car-ctrl">
+      <button type="button" class="nav" id="prev">Previous</button>
+      <button type="button" class="nav" id="next">Next</button>
+      <div class="dots" id="dots"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="tabpanel" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" tabindex="0" hidden>
+    <h2 class="page-h">Contact</h2>
+    <p class="lead">I'm open to entry-level roles in technical support and security, including SOC work. Email is the easiest way to reach me.</p>
+    <div class="mail-row">
+      <a class="big-mail" href="mailto:rajgaurav2541@gmail.com" id="mail">rajgaurav2541@gmail.com</a>
+    </div>
+    <div class="mail-row">
+      <button type="button" class="copy" id="copy">Copy email</button>
+      <span class="status" id="status" role="status"></span>
+    </div>
+    <p><a href="https://www.linkedin.com/in/gauravraj04" target="_blank" rel="noopener">linkedin.com/in/gauravraj04</a></p>
+    <p class="clock" id="clock"></p>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">Gaurav Raj, 2026</div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+
+  /* Theme */
+  var themeBtn = document.getElementById("theme");
+  function effective() {
+    var t = root.getAttribute("data-theme");
+    if (t) return t;
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  function syncTheme() { themeBtn.textContent = effective() === "dark" ? "Light" : "Dark"; }
+  try {
+    var saved = localStorage.getItem("theme");
+    if (saved === "dark" || saved === "light") root.setAttribute("data-theme", saved);
+  } catch (e) {}
+  syncTheme();
+  themeBtn.addEventListener("click", function () {
+    var next = effective() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    syncTheme();
+  });
+
+  /* Tabs */
+  var ids = ["home", "support", "security", "projects", "contact"];
+  var tabBtns = ids.map(function (id) { return document.getElementById("tab-" + id); });
+  var panels = ids.map(function (id) { return document.getElementById("panel-" + id); });
+  var ind = document.getElementById("ind");
+  var dial = document.getElementById("dial");
+  var current = "home";
+
+  function hueFor(t) { return 350 - 95 * t; }
+  function applyHue() {
+    var h = current === "support" ? 350 : current === "security" ? 255 : hueFor(dial.value / 100);
+    root.style.setProperty("--h", h.toFixed(1));
+  }
+  function moveInd() {
+    var b = tabBtns[ids.indexOf(current)];
+    if (!b) return;
+    ind.style.width = b.offsetWidth + "px";
+    ind.style.transform = "translateX(" + b.offsetLeft + "px)";
+  }
+  function select(id, focus, initial) {
+    if (ids.indexOf(id) < 0) id = "home";
+    current = id;
+    ids.forEach(function (x, i) {
+      var on = x === id;
+      tabBtns[i].setAttribute("aria-selected", on ? "true" : "false");
+      tabBtns[i].tabIndex = on ? 0 : -1;
+      panels[i].hidden = !on;
+    });
+    applyHue();
+    moveInd();
+    var btn = tabBtns[ids.indexOf(id)];
+    if (focus) btn.focus();
+    try { btn.scrollIntoView({ block: "nearest", inline: "nearest" }); } catch (e) {}
+    if (!initial) {
+      try { history.replaceState(null, "", "#" + id); } catch (e) {}
+      window.scrollTo(0, 0);
+    }
+    if (id === "projects") updateCarousel();
+  }
+  tabBtns.forEach(function (b, i) {
+    b.addEventListener("click", function () { select(ids[i], false); });
+    b.addEventListener("keydown", function (e) {
+      var n = null;
+      if (e.key === "ArrowRight") n = (i + 1) % ids.length;
+      else if (e.key === "ArrowLeft") n = (i - 1 + ids.length) % ids.length;
+      else if (e.key === "Home") n = 0;
+      else if (e.key === "End") n = ids.length - 1;
+      if (n !== null) { e.preventDefault(); select(ids[n], true); }
+    });
+  });
+  document.querySelectorAll("[data-goto]").forEach(function (el) {
+    el.addEventListener("click", function (e) { e.preventDefault(); select(el.getAttribute("data-goto"), false); });
+  });
+  window.addEventListener("resize", moveInd);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveInd);
+
+  /* Support / security slider */
+  var variants = document.querySelectorAll(".stack > .v");
+  var hero = document.getElementById("hero");
+  var ends = document.querySelectorAll(".end");
+  function updateDial() {
+    var t = dial.value / 100;
+    var state = t <= 0.33 ? "support" : t >= 0.67 ? "security" : "both";
+    variants.forEach(function (v) { v.classList.toggle("on", v.getAttribute("data-v") === state); });
+    hero.style.setProperty("--so", (t <= 0.5 ? 1 : Math.max(0.45, 1 - (t - 0.5) * 1.4)).toFixed(2));
+    hero.style.setProperty("--xo", (t >= 0.5 ? 1 : Math.max(0.45, 1 - (0.5 - t) * 1.4)).toFixed(2));
+    var label = state === "support" ? "Support" : state === "security" ? "Security" : "Both";
+    dial.setAttribute("aria-valuetext", label);
+    ends.forEach(function (b) {
+      var v = parseInt(b.getAttribute("data-v"), 10);
+      var match = (v === 0 && state === "support") || (v === 100 && state === "security") || (v === 50 && state === "both");
+      b.setAttribute("aria-pressed", match ? "true" : "false");
+    });
+    applyHue();
+  }
+  dial.addEventListener("input", updateDial);
+  ends.forEach(function (b) {
+    b.addEventListener("click", function () { dial.value = b.getAttribute("data-v"); updateDial(); });
+  });
+
+  /* Tool explorer */
+  var tools = {
+    nmap: { name: "Nmap", what: "Scans a network to find which hosts are up and which ports and services are open.",
+      code: "nmap -sV 10.10.10.5", note: "Lists the open ports and the service version running on each." },
+    wireshark: { name: "Wireshark", what: "Captures and inspects network traffic packet by packet.",
+      code: "http.request.method == \"POST\"", note: "A display filter that shows only HTTP POST requests in a capture." },
+    burp: { name: "Burp Suite", what: "Sits between the browser and a web app so requests can be inspected and modified.",
+      code: "Proxy > Intercept on > Send to Repeater", note: "Catch a request from the browser, then edit it and resend it to see how the app reacts." },
+    metasploit: { name: "Metasploit", what: "A framework for testing known vulnerabilities against systems in a lab.",
+      code: "msfconsole\nmsf6 > search smb", note: "Starts the console and searches for modules related to SMB." },
+    sqlmap: { name: "SQLMap", what: "Automates testing web applications for SQL injection.",
+      code: "sqlmap -u \"http://10.10.10.5/item?id=1\" --batch", note: "Tests the id parameter of a lab target for SQL injection." },
+    kali: { name: "Kali Linux", what: "A Linux distribution that comes with security testing tools installed.",
+      code: "sudo apt update && sudo apt full-upgrade", note: "Keeps the machine and its tools up to date." }
+  };
+  var toolBtns = document.querySelectorAll(".toollist button");
+  function showTool(key) {
+    var t = tools[key];
+    if (!t) return;
+    toolBtns.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-tool") === key ? "true" : "false"); });
+    document.getElementById("tName").textContent = t.name;
+    document.getElementById("tWhat").textContent = t.what;
+    document.getElementById("tCode").textContent = t.code;
+    document.getElementById("tNote").textContent = t.note;
+  }
+  toolBtns.forEach(function (b) { b.addEventListener("click", function () { showTool(b.getAttribute("data-tool")); }); });
+  showTool("nmap");
+
+  /* Accordion */
+  document.querySelectorAll(".acc button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", open ? "false" : "true");
+      document.getElementById(btn.getAttribute("aria-controls")).classList.toggle("open", !open);
+    });
+  });
+
+  /* Projects carousel */
+  var track = document.getElementById("track");
+  var slides = track.children;
+  var dotsBox = document.getElementById("dots");
+  var prev = document.getElementById("prev");
+  var next = document.getElementById("next");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var behavior = reduce ? "auto" : "smooth";
+  function step() {
+    var gap = parseFloat(getComputedStyle(track).columnGap) || 16;
+    return slides[0].getBoundingClientRect().width + gap;
+  }
+  var dotBtns = [];
+  for (var i = 0; i < slides.length; i++) {
+    (function (n) {
+      var d = document.createElement("button");
+      d.type = "button";
+      d.setAttribute("aria-label", "Show project " + (n + 1));
+      d.addEventListener("click", function () { track.scrollTo({ left: n * step(), behavior: behavior }); });
+      dotsBox.appendChild(d);
+      dotBtns.push(d);
+    })(i);
+  }
+  function updateCarousel() {
+    if (!slides.length || panels[3].hidden) return;
+    var idx = Math.round(track.scrollLeft / step());
+    idx = Math.max(0, Math.min(slides.length - 1, idx));
+    var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    if (atEnd) idx = slides.length - 1;
+    dotBtns.forEach(function (d, n) { d.setAttribute("aria-current", n === idx ? "true" : "false"); });
+    prev.disabled = track.scrollLeft <= 4;
+    next.disabled = atEnd;
+  }
+  prev.addEventListener("click", function () { track.scrollBy({ left: -step(), behavior: behavior }); });
+  next.addEventListener("click", function () { track.scrollBy({ left: step(), behavior: behavior }); });
+  var ticking = false;
+  track.addEventListener("scroll", function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { updateCarousel(); ticking = false; });
+  }, { passive: true });
+  window.addEventListener("resize", updateCarousel);
+
+  /* Copy email */
+  var status = document.getElementById("status");
+  var addr = document.getElementById("mail").textContent;
+  function say(msg) { status.textContent = msg; setTimeout(function () { status.textContent = ""; }, 2200); }
+  function fallbackCopy() {
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = addr; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      var ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      say(ok ? "Copied" : "Select the address to copy it");
+    } catch (e) { say("Select the address to copy it"); }
+  }
+  document.getElementById("copy").addEventListener("click", function () {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(addr).then(function () { say("Copied"); }, fallbackCopy);
+    } else { fallbackCopy(); }
+  });
+
+  /* Delhi time */
+  var clock = document.getElementById("clock");
+  function tick() {
+    try {
+      var t = new Intl.DateTimeFormat("en-IN", { hour: "numeric", minute: "2-digit", hour12: true, timeZone: "Asia/Kolkata" }).format(new Date());
+      clock.textContent = "It's " + t + " in Delhi.";
+    } catch (e) { clock.textContent = "Based in Delhi, India."; }
+  }
+  tick();
+  setInterval(tick, 30000);
+
+  /* Start */
+  updateDial();
+  var start = "home";
+  try { start = (location.hash || "").replace("#", "") || "home"; } catch (e) {}
+  select(start, false, true);
+  window.addEventListener("load", moveInd);
+})();
+</script>
+</body>
+</html>
