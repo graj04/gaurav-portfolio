@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gaurav Raj | Support and security</title>
-<meta name="description" content="Gaurav Raj, computer science graduate based in Delhi. Customer support and onboarding at Vareli Tecsoft, with hands-on security practice.">
+<title>Gaurav Raj | Technical Support &amp; Cybersecurity</title>
+<meta name="description" content="Gaurav Raj — Technical Support & Cloud Solutions at Vareli Tecnac, with hands-on cybersecurity practice in network, web and Linux security.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -180,6 +180,10 @@
   .panel p { margin: 0 4px 18px; color: var(--muted); max-width: 52ch; }
 
   /* Support tab */
+  dl.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin: 0 0 44px; }
+  dl.stats > div { padding: 18px 20px; background: var(--tint); border-radius: 16px; }
+  dl.stats dt { font-family: var(--display); font-weight: 800; font-size: 2rem; letter-spacing: -0.02em; color: var(--accent-strong); margin-bottom: 4px; }
+  dl.stats dd { margin: 0; color: var(--muted); font-size: .95rem; line-height: 1.4; }
   .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; }
   .col-h { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
   .edu { margin: 0 0 28px; padding: 16px 18px; background: var(--tint); border-radius: 16px; }
@@ -226,6 +230,13 @@
   .slide.x .tag i { background: var(--g2); }
   .slide h3 { font-size: 1.7rem; font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
   .slide p { margin: 0; max-width: 34ch; color: var(--ink); opacity: .82; }
+  .slide.proof { flex: 0 0 min(480px, 92%); justify-content: flex-start; padding-top: 26px; }
+  .slide.proof h3 { font-size: 1.4rem; margin-bottom: 14px; }
+  .slide.proof p.proof-line { max-width: none; font-size: .95rem; line-height: 1.5; margin-bottom: 10px; opacity: .9; }
+  .slide.proof p.proof-line strong { opacity: 1; }
+  .proof-link { display: inline-block; margin-top: 6px; font-weight: 700; color: var(--ink); text-decoration: none; }
+  .proof-link:hover { text-decoration: underline; }
+  .slide.proof::after { display: none; }
   .car-ctrl { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
   .car-ctrl .nav { all: unset; cursor: pointer; padding: 8px 16px; border-radius: 10px; border: 1.5px solid var(--line); font-weight: 600; }
   .car-ctrl .nav:hover:not(:disabled) { border-color: var(--ink); }
@@ -276,9 +287,10 @@
     <a class="brand" href="#home" data-goto="home">Gaurav Raj</a>
     <div class="tabs" role="tablist" aria-label="Sections" id="tabs">
       <button class="tab" role="tab" id="tab-home" aria-controls="panel-home" aria-selected="true">Home</button>
-      <button class="tab" role="tab" id="tab-support" aria-controls="panel-support" aria-selected="false" tabindex="-1">Support</button>
-      <button class="tab" role="tab" id="tab-security" aria-controls="panel-security" aria-selected="false" tabindex="-1">Security</button>
+      <button class="tab" role="tab" id="tab-about" aria-controls="panel-about" aria-selected="false" tabindex="-1">About</button>
+      <button class="tab" role="tab" id="tab-support" aria-controls="panel-support" aria-selected="false" tabindex="-1">Experience</button>
       <button class="tab" role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="false" tabindex="-1">Projects</button>
+      <button class="tab" role="tab" id="tab-security" aria-controls="panel-security" aria-selected="false" tabindex="-1">Security</button>
       <button class="tab" role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false" tabindex="-1">Contact</button>
       <span class="ind" id="ind" aria-hidden="true"></span>
     </div>
@@ -291,15 +303,15 @@
   <!-- HOME -->
   <section class="tabpanel" id="panel-home" role="tabpanel" aria-labelledby="tab-home" tabindex="0">
     <div id="hero">
-      <p class="hello">Hi, I'm Gaurav, a computer science graduate based in Delhi.</p>
+      <p class="hello">Hi, I'm Gaurav, based in Delhi.</p>
       <h1 class="stack">
-        <span class="v" data-v="support">I get customers unstuck.</span>
-        <span class="v on" data-v="both">I fix customer problems and study how systems break.</span>
-        <span class="v" data-v="security">I learn how systems break.</span>
+        <span class="v" data-v="support">Technical Support &amp; Customer Onboarding.</span>
+        <span class="v on" data-v="both">Technical Support by day, Cybersecurity by practice.</span>
+        <span class="v" data-v="security">Cybersecurity, learned hands-on.</span>
       </h1>
       <div class="stack subs">
-        <p class="v" data-v="support" style="margin:0">At Vareli Tecsoft I onboard new customers, run configuration demos and resolve tickets for wedding and event planners on TTP.</p>
-        <p class="v on" data-v="both" style="margin:0">Support is my day job. Security is what I practise on my own, in labs and through my studies.</p>
+        <p class="v" data-v="support" style="margin:0">At Vareli Tecnac I provide technical support for a cloud-hosted SaaS platform — onboarding clients, running demos and resolving tickets for wedding and event planners on TTP.</p>
+        <p class="v on" data-v="both" style="margin:0">Support is my day job: real customers, real tickets, real deadlines. Security is what I train on my own, in labs and through structured study toward SOC work.</p>
         <p class="v" data-v="security" style="margin:0">Hands-on labs, the tools that go with them, and a study plan that points toward SOC work.</p>
       </div>
 
@@ -335,16 +347,61 @@
       </div>
 
       <div class="actions">
-        <a class="btn primary" href="mailto:rajgaurav2541@gmail.com">Email me</a>
+        <a class="btn primary" href="resume.pdf" download>Download resume</a>
+        <a class="btn ghost" href="mailto:rajgaurav2541@gmail.com">Email</a>
         <a class="btn ghost" href="https://www.linkedin.com/in/gauravraj04" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/graj04" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="tabpanel" id="panel-about" role="tabpanel" aria-labelledby="tab-about" tabindex="0" hidden>
+    <h2 class="page-h">About</h2>
+    <p class="lead">Computer science graduate from Lovely Professional University, working in technical support while building toward security. Schooled at Kendriya Vidyalaya, Rohtak, before that.</p>
+
+    <div class="split">
+      <div>
+        <h3 class="col-h">Skills</h3>
+        <dl class="kv">
+          <dt>Support</dt>
+          <dd>Technical &amp; non-technical support, ticket resolution, escalation, client onboarding.</dd>
+          <dt>OS &amp; networking</dt>
+          <dd>Linux/Unix, Windows, TCP/IP, DNS, connectivity troubleshooting.</dd>
+          <dt>Databases</dt>
+          <dd>SQL, MySQL, MongoDB — relational and non-relational.</dd>
+          <dt>APIs &amp; automation</dt>
+          <dd>REST APIs, Docker, Python scripting, Git/GitHub.</dd>
+          <dt>Cloud</dt>
+          <dd>Microsoft Azure, SaaS platform administration.</dd>
+          <dt>Languages</dt>
+          <dd>Python, Java, C++, C, Streamlit.</dd>
+        </dl>
+      </div>
+      <div>
+        <h3 class="col-h">Achievements</h3>
+        <div class="edu" style="margin-bottom:16px">
+          Ranked <strong>1st out of 50+ participants</strong> in a university-wide technical quiz competition.
+        </div>
+        <div class="edu">
+          Completed a <strong>3-day cybersecurity workshop and CTF</strong> hosted by Secuneus Pvt. Ltd. at university.
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SUPPORT -->
   <section class="tabpanel" id="panel-support" role="tabpanel" aria-labelledby="tab-support" tabindex="0" hidden>
-    <h2 class="page-h">Support</h2>
-    <p class="lead">I'm a <strong>Customer Onboarding &amp; Support Intern</strong> at Vareli Tecsoft Pvt. Ltd. in Pune, working on TTP (The Tech Planner), an event management platform for wedding and event planners.</p>
+    <h2 class="page-h">Experience</h2>
+    <p class="lead">I'm a <strong>Client Support &amp; Cloud Solutions Intern</strong> at Vareli Tecnac Pvt. Ltd. in Pune, working on TTP (The Tech Planner), an event management platform for wedding and event planners.</p>
+
+    <dl class="stats" aria-label="Support work, measured">
+      <div><dt>20+</dt><dd>client queries handled per month, same-day response</dd></div>
+      <div><dt>10+</dt><dd>new clients onboarded onto the Azure-based platform</dd></div>
+      <div><dt>15+</dt><dd>product demos delivered to prospective clients</dd></div>
+      <div><dt>90%+</dt><dd>client retention across the active account portfolio</dd></div>
+    </dl>
+
     <div class="split">
       <div>
         <h3 class="col-h">What I do day to day</h3>
@@ -352,19 +409,31 @@
           <div class="acc">
             <h3><button type="button" aria-expanded="false" aria-controls="p1" id="b1">Resolving tickets <span class="chev" aria-hidden="true"></span></button></h3>
             <div class="panel" id="p1" role="region" aria-labelledby="b1"><div>
-              <p>I work out what the client is actually trying to do, then either fix it or explain it clearly. I keep a written record so the team knows what changed.</p>
+              <p>I investigate and resolve client-reported issues around connectivity, configuration and platform/UI functionality, keeping a same-day response rate across 20+ queries a month.</p>
             </div></div>
           </div>
           <div class="acc">
-            <h3><button type="button" aria-expanded="false" aria-controls="p2" id="b2">Onboarding new customers <span class="chev" aria-hidden="true"></span></button></h3>
+            <h3><button type="button" aria-expanded="false" aria-controls="p2" id="b2">Escalating what I can't fix <span class="chev" aria-hidden="true"></span></button></h3>
             <div class="panel" id="p2" role="region" aria-labelledby="b2"><div>
-              <p>When a wedding or event planner joins TTP, I guide them through getting started so they aren't left to work out the platform alone.</p>
+              <p>Complex, unresolved issues go to engineering, but I track them through to resolution so the client gets an accurate answer regardless of which team solves it.</p>
             </div></div>
           </div>
           <div class="acc">
-            <h3><button type="button" aria-expanded="false" aria-controls="p3" id="b3">Configuration demos <span class="chev" aria-hidden="true"></span></button></h3>
+            <h3><button type="button" aria-expanded="false" aria-controls="p3" id="b3">Onboarding new clients <span class="chev" aria-hidden="true"></span></button></h3>
             <div class="panel" id="p3" role="region" aria-labelledby="b3"><div>
-              <p>I show clients how to set the platform up for the way they work, so they can manage it themselves afterwards.</p>
+              <p>I've onboarded 10+ new clients onto the Azure-based cloud platform, reducing setup friction with structured walkthroughs, account configuration support and technical documentation.</p>
+            </div></div>
+          </div>
+          <div class="acc">
+            <h3><button type="button" aria-expanded="false" aria-controls="p4" id="b4">Testing before rollout <span class="chev" aria-hidden="true"></span></button></h3>
+            <div class="panel" id="p4" role="region" aria-labelledby="b4"><div>
+              <p>I review and test platform features and configuration workflows ahead of client rollout, and report bugs and usability issues to improve reliability.</p>
+            </div></div>
+          </div>
+          <div class="acc">
+            <h3><button type="button" aria-expanded="false" aria-controls="p5" id="b5">Demos and follow-ups <span class="chev" aria-hidden="true"></span></button></h3>
+            <div class="panel" id="p5" role="region" aria-labelledby="b5"><div>
+              <p>I've delivered product demos to 15+ prospective clients, translating platform capabilities into clear business value. Proactive follow-up and clear technical communication have helped keep client retention above 90% across the active portfolio.</p>
             </div></div>
           </div>
         </div>
@@ -373,9 +442,9 @@
         <p class="edu"><strong>B.Tech, Computer Science Engineering</strong><br>Lovely Professional University</p>
         <dl class="kv">
           <dt>Support</dt>
-          <dd>Ticket handling, customer onboarding, configuration demos, written follow-ups.</dd>
+          <dd>Ticket handling, escalation tracking, customer onboarding, configuration demos, written follow-ups.</dd>
           <dt>Technical</dt>
-          <dd>Troubleshooting, APIs and HTTP methods, Excel, Linux.</dd>
+          <dd>Troubleshooting, APIs and HTTP methods, Excel, Linux, Microsoft Azure basics.</dd>
         </dl>
       </div>
     </div>
@@ -419,12 +488,16 @@
       <div>
         <h3>Certificates</h3>
         <ul>
-          <li>Tata Cybersecurity</li>
-          <li>Mastercard Cybersecurity</li>
-          <li>IBM Generative AI</li>
+          <li>Tata — Cybersecurity Security Analyst Job Simulation (Mar 2025)</li>
+          <li>Mastercard — Cybersecurity Virtual Experience Program (Dec 2024)</li>
+          <li>IBM — Building Generative AI-Powered Applications with Python (Feb 2026)</li>
+          <li>GeeksforGeeks — Data Structures and Algorithms (Aug 2024)</li>
         </ul>
       </div>
     </div>
+    <p class="lead" style="margin-top:44px">
+      Proof of work: an <button type="button" class="link" data-goto="projects">Ethical Hacking &amp; Threat Simulation project</button> where I ran scans across 5+ simulated environments, tested SQL injection on 3 endpoints, and built a custom keylogger to show how the attack works.
+    </p>
   </section>
 
   <!-- PROJECTS -->
@@ -432,6 +505,24 @@
     <h2 class="page-h">Projects</h2>
     <p class="lead">Use the buttons or swipe the row.</p>
     <div class="track" id="track" role="region" aria-label="Projects" tabindex="0">
+      <article class="slide x proof">
+        <div class="tag"><i></i>Security</div>
+        <h3>Ethical Hacking &amp; Threat Simulation</h3>
+        <p class="proof-line"><strong>Problem —</strong> understand how common web and network attacks actually work, hands-on, in a safe setting.</p>
+        <p class="proof-line"><strong>What I did —</strong> ran vulnerability assessments, penetration tests and network scans across 5+ simulated environments with Nmap and Wireshark; simulated SQL injection against 3 vulnerable test endpoints; wrote a custom keylogger to demonstrate a common attack vector.</p>
+        <p class="proof-line"><strong>Tech —</strong> Nmap, Wireshark, Burp Suite, SQLMap, Metasploit, Kali Linux.</p>
+        <p class="proof-line"><strong>Result —</strong> working proof-of-concept exploits and a clearer view of the gaps they exploit.</p>
+        <a class="proof-link" href="https://github.com/graj04" target="_blank" rel="noopener">Code on GitHub →</a>
+      </article>
+      <article class="slide s proof">
+        <div class="tag"><i></i>Automation</div>
+        <h3>Smart Personal Finance Categorizer &amp; Dashboard</h3>
+        <p class="proof-line"><strong>Problem —</strong> manually sorting bank statement transactions into spending categories is tedious.</p>
+        <p class="proof-line"><strong>What I did —</strong> built a Python tool that parses bank statement files and automatically classifies transactions into spending categories, plus a Streamlit dashboard with visual breakdowns of monthly spending.</p>
+        <p class="proof-line"><strong>Tech —</strong> Python, Pandas, Streamlit.</p>
+        <p class="proof-line"><strong>Result —</strong> 500+ transactions auto-classified into 5 categories, with 4 visual breakdowns replacing manual data entry.</p>
+        <a class="proof-link" href="https://github.com/graj04" target="_blank" rel="noopener">Code on GitHub →</a>
+      </article>
       <article class="slide s">
         <div class="tag"><i></i>Support</div>
         <h3>Customer onboarding on TTP</h3>
@@ -441,11 +532,6 @@
         <div class="tag"><i></i>Support</div>
         <h3>WhatsApp Business API templates for TTP</h3>
         <p>Message templates for TTP's customer communication, drafted to follow Meta's template rules.</p>
-      </article>
-      <article class="slide x">
-        <div class="tag"><i></i>Security</div>
-        <h3>Lab write-ups</h3>
-        <p>Write-ups from my TryHackMe and HackTheBox labs will go here.</p>
       </article>
     </div>
     <div class="car-ctrl">
@@ -467,6 +553,8 @@
       <span class="status" id="status" role="status"></span>
     </div>
     <p><a href="https://www.linkedin.com/in/gauravraj04" target="_blank" rel="noopener">linkedin.com/in/gauravraj04</a></p>
+    <p><a href="https://github.com/graj04" target="_blank" rel="noopener">github.com/graj04</a></p>
+    <p><a href="resume.pdf" download>Download resume (PDF)</a></p>
     <p class="clock" id="clock"></p>
   </section>
 
@@ -501,7 +589,7 @@
   });
 
   /* Tabs */
-  var ids = ["home", "support", "security", "projects", "contact"];
+  var ids = ["home", "about", "support", "projects", "security", "contact"];
   var tabBtns = ids.map(function (id) { return document.getElementById("tab-" + id); });
   var panels = ids.map(function (id) { return document.getElementById("panel-" + id); });
   var ind = document.getElementById("ind");
